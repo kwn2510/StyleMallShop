@@ -1,0 +1,126 @@
+/*admin-login*/
+body {
+    background-color: #1c6ba0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .log-w3 {
+    max-width: 400px;
+    padding: 20px;
+    background: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .w3layouts-main {
+    text-align: center;
+  }
+  
+  .w3layouts-main h2 {
+    color: #fff;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .w3layouts-main form {
+    margin-bottom: 20px;
+  }
+  
+  .w3layouts-main input[type="email"],
+  .w3layouts-main input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    margin-right: 25px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+  }
+  
+  .w3layouts-main span {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .w3layouts-main h6 {
+    margin-bottom: 20px;
+  }
+  
+  .w3layouts-main input[type="submit"] {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 3px;
+  }
+  
+  .w3layouts-main input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  .w3layouts-main .clearfix {
+    clear: both;
+  }
+.log-w3 {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .w3layouts-main h2 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .w3layouts-main form {
+    margin-bottom: 20px;
+  }
+  
+  .w3layouts-main input[type="email"],
+  .w3layouts-main input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+  }
+  
+  .w3layouts-main span {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .w3layouts-main h6 {
+    margin-bottom: 20px;
+  }
+  
+  .w3layouts-main input[type="submit"] {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 3px;
+  }
+  
+  .w3layouts-main input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  .w3layouts-main .clearfix {
+    clear: both;
+  }
+
+/*ADMIN*/
+

@@ -1,0 +1,47 @@
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .breadcrumbs {
+    margin-bottom: 10px;
+  }
+  
+  .breadcrumb li {
+    display: inline;
+    margin-right: 5px;
+  }
+  
+  .breadcrumb li a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .register-req p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  
+  .shopper-informations {
+    margin-bottom: 20px;
+  }
+  
+  .bill-to input[type="text"],
+  .bill-to input[type="email"],
+  .bill-to input[type="tel"] {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .order-message textarea {
+    width: 100%;
+    padding: 8px;
+    resize: vertical;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
