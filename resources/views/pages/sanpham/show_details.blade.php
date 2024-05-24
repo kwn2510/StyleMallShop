@@ -89,44 +89,8 @@
                             @endforeach
 								</div>
                             
-								<!-- <div class="item">	
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="{{asset('public/frontend/images/home/sale.jpg')}}" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="{{asset('public/frontend/images/home/sale.jpg')}}" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="{{asset('public/frontend/images/home/sale.jpg')}}" alt="" />
-													<h2>$7</h2>
-													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div> -->
+								
+									
 							</div>
 							 <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
 								<i class="fa fa-angle-left"></i>
@@ -149,23 +113,37 @@
 							<div class="tab-pane fade active in" id="reviews" >
 								<div class="col-sm-12">
 									<ul>
-										<li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
-										<li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>
-										<li><a href=""><i class="fa fa-calendar-o"></i>31 DEC 2014</a></li>
+										<li><a href=""><i class="fa fa-user"></i>Admin</a></li>
+										<li><a href=""><i class="fa fa-clock"></i>12:41 PM</a></li>
+										<li><a href=""><i class="fa fa-calendar"></i>23.04.2024</a></li>
 									</ul>
-									<p>Sản phẩm đẹp và chất lượng.</p>
+									<style type="text/css">
+										.style_comment{
+											border: 1px solid #ddd;
+											border-radius:5px;
+											background:#F0F0E9;
+										}
+									</style>
+
+									<form>
+										@csrf
+										<input type="hidden" class="comment_product_id" name="comment_product_id" value="{{$value->product_id}}">
+										<div id="comment_show"></div>
+									
+									</form>
+									
 									<p><b>Viết đánh giá</b></p>
 									
 									<form action="#">
 										<span>
-											<input type="text" placeholder="Your Name"/>
-											<input type="email" placeholder="Email Address"/>
+											<input style="width:100%;margin-left:0;" type="text" class="comment_name" placeholder="Tên của bạn"/>
 										</span>
-										<textarea name="" ></textarea>
+										<textarea name="comment" class="comment_content" placeholder="Nội dung bình luận" ></textarea>
 										<b>Rating: </b> <img src="images/product-details/rating.png" alt="" />
-										<button type="button" class="btn btn-default pull-right">
-											Submit
+										<button type="button" class="btn btn-default pull-right send-comment">
+											Gửi
 										</button>
+										<div id="notify_comment"></div>
 									</form>
 								</div>
 							</div>

@@ -6,6 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>HOME</title>
+    
     <!--CSS-->
     <link href="{{asset('public/frontend/css/main1.css')}}" rel="stylesheet">
     <link href="{{asset('public/frontend/css/product.css')}}" rel="stylesheet">
@@ -40,6 +41,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+   
 
 </head>
 <body>
@@ -49,7 +51,7 @@
                 <div class="row">
                     <div class="row1">
                         <div class="logo">
-                            <a href="{{URL::to('/trang-chu')}}"><img src="{{('public/frontend/images/home/logo.png')}}" alt="" class="img_logo"></a>
+                            <a href="{{URL::to('/trang-chu')}}"><img src="{{asset('public/frontend/images/home/logo.png')}}" alt="" class="img_logo"></a>
                         </div>
                     </div>
                     <div class="row2">
@@ -211,9 +213,27 @@
                         <div class="trendy">
                             <h2 class="small_title">Trendy</h2>
                             <div class="trendy-name">
-                                <ul class="nav nav-pills nav-stacked">
-                                    
-                                </ul>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">Classic</h4>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">Feminine</h4>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">Sporty</h4>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">Chic</h4>
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
 
@@ -301,6 +321,55 @@
     <script src="{{asset('public/frontend/js/jquery.prettyPhoto.js')}}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="public/frontend/js/login.js" class=""></script>
+    <script src="{{asset('public/frontend/js/sweetalert.min.js')}}"></script>
+    
+
+
+
+   
+    <script type="text/javascript">
+    $(document).ready(function(){
+        // Mã JavaScript/AJAX ở đây
+        load_comment();
+
+        function load_comment(){
+            var product_id = $('input[name="comment_product_id"]').val();
+            var _token = $('input[name="_token"]').val();
+            
+            $.ajax({
+                url: "{{ url('/load-comment') }}",
+                method: "POST",
+                data: { product_id: product_id, _token: _token },
+                success: function(data){
+                    $('#comment_show').html(data);
+                },
+                error: function(xhr, status, error){
+                    console.log(xhr.responseText);
+                }
+            });
+        }
+
+        $('.send-comment').click(function(){
+            var product_id = $('.comment_product_id').val();
+            var comment_name = $('.comment_name').val();
+            var comment_content = $('.comment_content').val();
+            var _token = $('input[name="_token"]').val();
+
+            $.ajax({
+                url: "{{ url('/send-comment') }}",
+                method: "POST",
+                data: { product_id: product_id, comment_name: comment_name, comment_content: comment_content, _token: _token },
+                success: function(data){
+                    $('#notify_comment').html('<p class="text text-success">Thêm thành công! Đánh giá của bạn đang chờ duyệt</p>')
+                    load_comment();
+                    $('#notify_comment').fadeOut(5000);
+                    $('.comment_name').val('');
+                    $('.comment_content').val('');
+                }
+            });
+        });
+    });
+</script>
     
 
 

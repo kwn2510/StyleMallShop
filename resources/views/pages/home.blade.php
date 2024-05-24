@@ -1,102 +1,6 @@
 @extends('welcome')
 @section('content')
 
-                    <div class="sale_items"> <!--sale-->
-                        <h2 class="title text-center" style="margin-top: 100px;">Ưu đãi trong tháng</h2>
-                        <div id="sale-item-carousel" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                    <div class="col-sm-4">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="{{('public/frontend/images/home/sale.jpg')}}" alt="" />
-                                                    <h2>đ150.000</h2>
-                                                    <h3 style="color:gray; text-decoration: line-through;">đ250.000</h3>
-                                                    <p>Set đồ tiểu thư màu xanh ngọc có nơ đính đá</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="{{('public/frontend/images/home/sale2.jpg')}}" alt="" />
-                                                    <h2>đ150.000</h2>
-                                                    <h3 style="color:gray; text-decoration: line-through;">đ250.000</h3>
-                                                    <p>Set đồ tiểu thư màu xanh ngọc có nơ đính đá</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="{{('public/frontend/images/home/sale3.jpg')}}" alt="" />
-                                                    <h2>đ150.000</h2>
-                                                    <h3 style="color:gray; text-decoration: line-through;">đ250.000</h3>
-                                                    <p>Set đồ tiểu thư màu xanh ngọc có nơ đính đá</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item">
-                                    <div class="col-sm-4">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="{{('public/frontend/images/home/sale5.jpg')}}" alt="" />
-                                                    <h2>đ150.000</h2>
-                                                    <h3 style="color:gray; text-decoration: line-through;">đ250.000</h3>
-                                                    <p>Set đồ tiểu thư màu xanh ngọc có nơ đính đá</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="{{('public/frontend/images/home/sale6.jpg')}}" alt="" />
-                                                    <h2>đ150.000</h2>
-                                                    <h3 style="color:gray; text-decoration: line-through;">đ250.000</h3>
-                                                    <p>Set đồ tiểu thư màu xanh ngọc có nơ đính đá</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="{{('public/frontend/images/home/sale7.jpg')}}" alt="" />
-                                                    <h2>đ150.000</h2>
-                                                    <h3 style="color:gray; text-decoration: line-through;">đ250.000</h3>
-                                                    <p>Set đồ tiểu thư màu xanh ngọc có nơ đính đá</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a class="left sale-item-control" href="#sale-item-carousel" data-slide="prev">
-								<i class="fa fa-angle-left"></i>
-							  </a>
-							  <a class="right sale-item-control" href="#sale-item-carousel" data-slide="next">
-								<i class="fa fa-angle-right"></i>
-							  </a>	
-                        </div>
-                    </div><!--end sale-->
 
 
                     <h2 style="margin-top: 100px;" class="title text-center">Dành cho bạn</h2>
@@ -108,6 +12,7 @@
                         </div>
                         <div class="col">
                             @foreach($all_product as $key => $product)
+                            <a href="{{URL::to('chi-tiet-san-pham/'.$product->product_id)}}" >
                             <div class="col-sm-4">
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
@@ -115,13 +20,19 @@
                                             <img src="{{URL::to('public/upload/product/'.$product->product_image)}}" alt="" />
                                             <h2> {{ number_format(floatval($product->product_price)).' '.'VND'}}</h2>
                                             <p>{{$product->product_name}}</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shpping-cart">Thêm vào giỏ </i></a>
+                                            <p><button type="submit" class="btn btn-fefault cart">
+                                                <i class="fa fa-shopping-cart"></i>
+                                                Thêm giỏ hàng
+                                            </button></p>
                                         </div>
                                         <div class="product-overlay">
                                             <div class="overlay-content">
                                             <h2> {{ number_format(floatval($product->product_price)).' '.'VND'}}</h2>
                                             <p>{{$product->product_name}}</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shpping-cart">Thêm vào giỏ </i></a>
+                                            <p><button type="submit" class="btn btn-fefault cart">
+                                                <i class="fa fa-shopping-cart"></i>
+                                                Thêm giỏ hàng
+                                            </button></p>
                                             </div>
                                         </div>
                                     </div>

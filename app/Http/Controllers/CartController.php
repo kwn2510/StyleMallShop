@@ -10,7 +10,7 @@ use App\Slider;
 use Illuminate\Support\Facades\Redirect;
 use Cart;
 use App\Coupon;
-session_start();
+// session_start();
 
 
 

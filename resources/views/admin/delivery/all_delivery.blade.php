@@ -4,7 +4,7 @@
 <div class="table-agile-info">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h2>Hiển Thị Sản Phẩm</h2>
+      <h2>Hiển Phí Ship</h2>
     </div>
     <div class="table-responsive">
       <table class="table table-striped b-t b-light">
@@ -15,38 +15,22 @@
                 <input type="checkbox"><i></i>
               </label>
             </th>
-            <th>Tên sản phẩm</th>
-            <th>Giá </th>
-            <th>Hình sản phẩm</th>
-            <th>Danh mục</th>
-
-            <th>Hiển thị</th>
+            <th>Tên khu vực</th>
+            <th>Phí ship</th>
             <th style="width:30px;"></th>
           </tr>
         </thead>
         <tbody>
-            @foreach($all_product as $key => $pro)
+            @foreach($all_delivery as $key => $cate_pro)
           <tr>
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>{{ $pro->product_name }}</td>
-            <td>{{ $pro->product_price }}</td>
-            <td><img src="public/upload/product/{{ $pro->product_image }}" height="100" width="100"></td>
-            <td>{{ $pro->category_name }}</td>
-
-            <td><span class="text-ellipsis">
-            <?php
-            if($pro->product_status==0){
-                echo '<a href="#"><span class="fa fa-thumbs-up"></span></a>';
-            }else{
-                echo '<a href="#"><span class="fa fa-thumbs-down"></span></a>';
-            }
-            ?>
-            </span></td>
+            <td>{{ $cate_pro->fee_id }}</td>
+            <td>{{ $cate_pro->fee_feeship }}</td>
             
             <td>
-              <a href="{{URL::to('/edit-product/'.$pro->product_id)}}" class="active styling-edit" ui-toggle-class="">
+              <a href="{{URL::to('/edit-delivery/'.$cate_pro->fee_id)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-pencil-square text-success text-active"></i></a>
-                <a href="{{URL::to('/delete-product/'.$pro->product_id)}}" class="active styling-edit" ui-toggle-class="">
+                <a href="{{URL::to('/delete-delivery/'.$cate_pro->fee_id)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-times text-danger text"></i></a>
             </td>
           </tr>

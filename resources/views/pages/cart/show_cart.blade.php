@@ -73,8 +73,7 @@
 					<div class="total_area">
 						<ul>
 							<li>Tổng <span>{{Cart::total().' '.'VND'}}</span></li>
-							<li>Thuế <span>{{Cart::tax().' '.'VND'}}</span></li>
-							<li>Phí vận chuyển <span>Free</span></li>
+							<li>Phí vận chuyển <span>{{Cart::tax().' '.'VND'}}</span></li>
 							<li>Thành tiền <span>{{Cart::total().' '.'VND'}}</span></li>
 						</ul>
 						{{-- 	<a class="btn btn-default update" href="">Update</a> --}}

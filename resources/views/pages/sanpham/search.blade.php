@@ -6,6 +6,7 @@
                     <div class="features_items"> 
                         <div class="col">
                             @foreach($search_product as $key => $product)
+                            <a href="{{URL::to('chi-tiet-san-pham/'.$product->product_id)}}" >
                             <div class="col-sm-4">
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
@@ -14,13 +15,6 @@
                                             <h2> {{ number_format(floatval($product->product_price)).' '.'VND'}}</h2>
                                             <p>{{$product->product_name}}</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shpping-cart">Thêm vào giỏ </i></a>
-                                        </div>
-                                        <div class="product-overlay">
-                                            <div class="overlay-content">
-                                            <h2> {{ number_format(floatval($product->product_price)).' '.'VND'}}</h2>
-                                            <p>{{$product->product_name}}</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shpping-cart">Thêm vào giỏ </i></a>
-                                            </div>
                                         </div>
                                     </div>
                                     <div class="choose">

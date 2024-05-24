@@ -10,6 +10,12 @@ Route::post('/tim-kiem', 'App\Http\Controllers\HomeController@search');
 //danh mục sản phẩm trang chủ
 Route::get('/danh-muc-san-pham/{category_id}', 'App\Http\Controllers\CategoryProduct@show_category_home');
 Route::get('/chi-tiet-san-pham/{product_id}', 'App\Http\Controllers\ProductController@details_product');
+Route::get('/comment', 'App\Http\Controllers\ProductController@list_comment');
+Route::post('/load-comment', 'App\Http\Controllers\ProductController@load_comment');
+Route::post('/send-comment', 'App\Http\Controllers\ProductController@send_comment');
+Route::post('/allow-comment', 'App\Http\Controllers\ProductController@allow_comment');
+Route::post('/reply-comment', 'App\Http\Controllers\ProductController@reply_comment');
+
 
 //backend
 Route::get('/admin', 'App\Http\Controllers\AdminController@index');
@@ -35,6 +41,7 @@ Route::get('/all-product', 'App\Http\Controllers\ProductController@all_product')
 
 Route::post('/save-product', 'App\Http\Controllers\ProductController@save_product');
 Route::post('/update-product/{product_id}', 'App\Http\Controllers\ProductController@update_product');
+
 
 //cart
 Route::post('/save-cart', 'App\Http\Controllers\CartController@save_cart');
@@ -66,3 +73,15 @@ Route::post('/order-place','App\Http\Controllers\CheckoutController@order_place'
 // order-admin
 Route::get('/manage-order','App\Http\Controllers\CheckoutController@manage_order');
 Route::get('/view-order/{orderId}','App\Http\Controllers\CheckoutController@view_order');
+
+
+//Delivery
+
+Route::get('/add-delivery','App\Http\Controllers\DeliveryController@add_delivery');
+Route::get('/all-delivery', 'App\Http\Controllers\DeliveryController@all_delivery');
+Route::get('/edit-delivery/{fee_id}', 'App\Http\Controllers\DeliveryController@edit_delivery');
+Route::get('/delete-delivery/{fee_id}', 'App\Http\Controllers\DeliveryController@delete_delivery');
+
+
+Route::post('/save-delivery','App\Http\Controllers\DeliveryController@save_delivery');
+Route::post('/update-delivery','App\Http\Controllers\DeliveryController@update_delivery');
