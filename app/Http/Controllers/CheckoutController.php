@@ -16,15 +16,6 @@ class CheckoutController extends Controller
 {
     //login_checkout
     public function login_checkout(){
-    //     //slide
-    //    $slider = Slider::orderBy('slider_id','DESC')->where('slider_status','1')->take(4)->get();
-
-    //    //seo 
-    //    $meta_desc = "Đăng nhập thanh toán"; 
-    //    $meta_keywords = "Đăng nhập thanh toán";
-    //    $meta_title = "Đăng nhập thanh toán";
-    //    $url_canonical = $request->url();
-       //--seo 
 
        $cate_product = DB::table('tbl_category_product')->where('category_status','0')->orderby('category_id','desc')->get();
 
@@ -103,13 +94,7 @@ class CheckoutController extends Controller
 
     //order place
     public function order_place(Request $request){
-        //insert payment_method
-        //seo 
-        // $meta_desc = "Đăng nhập thanh toán"; 
-        // $meta_keywords = "Đăng nhập thanh toán";
-        // $meta_title = "Đăng nhập thanh toán";
-        // $url_canonical = $request->url();
-        //--seo 
+
         $data = array();
         $data['payment_method'] = $request->payment_option;
         $data['payment_status'] = 'Đang chờ xử lý';
@@ -121,8 +106,10 @@ class CheckoutController extends Controller
         $order_data['shipping_id'] = Session::get('shipping_id');
         $order_data['payment_id'] = $payment_id;
         $order_data['order_total'] = Cart::total();
-        $order_data['order_status'] = 'Đang chờ xử lý';
+        // $order_data['order_status'] = '';
         $order_id = DB::table('tbl_order')->insertGetId($order_data);
+
+        $order_by_id = null;
 
         //insert order_details
         $content = Cart::content();
@@ -142,7 +129,17 @@ class CheckoutController extends Controller
             Cart::destroy();
 
             $cate_product = DB::table('tbl_category_product')->where('category_status','0')->orderby('category_id','desc')->get();
-            return view('pages.checkout.handcash')->with('category',$cate_product);
+
+            $order_by_id = DB::table('tbl_order')
+            ->join('tbl_customer', 'tbl_order.customer_id', '=', 'tbl_customer.customer_id')
+            ->join('tbl_shipping', 'tbl_order.shipping_id', '=', 'tbl_shipping.shipping_id')
+            ->join('tbl_order_details', 'tbl_order.order_id', '=', 'tbl_order_details.order_id')
+            ->select('tbl_order.*', 'tbl_customer.*', 'tbl_shipping.*', 'tbl_order_details.*')
+            ->first();
+
+            $manager_order_by_id  = view('pages.checkout.handcash')->with('order_by_id',$order_by_id);
+
+            return view('pages.checkout.handcash')->with('category',$cate_product)->with('order_by_id',$order_by_id);
 
         }else{
             echo 'Thẻ ghi nợ';
@@ -175,7 +172,28 @@ class CheckoutController extends Controller
         $manager_order_by_id  = view('admin.view_order')->with('order_by_id',$order_by_id);
         return view('admin_layout')->with('admin.view_order', $manager_order_by_id);
         
+        
     }
+
+    //delete
+    public function delete_order ($order_id){
+        DB::table('tbl_order')->where('order_id',$order_id)->delete();
+        Session::put('message', 'Xóa thành công!');
+        return Redirect::to('manage-order');
+    }
+
+    // xử lý đơn hàng
+    public function allow_order(Request $request){
+        $data = $request->all();
+        $order = Order::find($data['order_id']);
+        $order->order_status = $data['order_status'];
+        $order->save();
+    }
+
+    
+
+   
+
 }
 
 

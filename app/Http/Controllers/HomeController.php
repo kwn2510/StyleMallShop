@@ -21,8 +21,9 @@ class HomeController extends Controller
         // ->get();
 
         $all_product = DB::table('tbl_product')->where('product_status','0')->orderby('product_id', 'desc')->limit(6)->get();
+        $new_product = DB::table('tbl_product')->where('product_status','0')->orderby('product_id', 'desc')->limit(3)->get();
 
-        return view('pages.home')->with('category',$cate_product)->with('all_product',$all_product);
+        return view('pages.home')->with('category',$cate_product)->with('all_product',$all_product)->with('new_product',$new_product);
     }
 
     public function search(Request $request){

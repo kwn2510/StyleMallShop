@@ -177,8 +177,6 @@ class ProductController extends Controller
                                         }
                                     }
 
-                                   
-            
         }
         return $output;
     }

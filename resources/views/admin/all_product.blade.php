@@ -11,9 +11,7 @@
         <thead>
           <tr>
             <th style="width:20px;">
-              <label class="i-checks m-b-none">
-                <input type="checkbox"><i></i>
-              </label>
+
             </th>
             <th>Tên sản phẩm</th>
             <th>Giá </th>

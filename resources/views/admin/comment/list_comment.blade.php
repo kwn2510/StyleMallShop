@@ -15,7 +15,6 @@
             <th>Tên người gửi </th>
             <th>Bình luận</th>
             <th>Ngày gửi</th>
-            <th>Sản phẩm</th>
             <th>Quản lý</th>
             <th style="width:30px;"></th>
           </tr>
@@ -63,7 +62,6 @@
                 
             </td>
             <td>{{ $comm->comment_date }}</td>
-            <td>{{ $comm->product->product_name }}</td>
             
             <td>
               <a href="" class="active styling-edit" ui-toggle-class="">

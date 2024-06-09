@@ -27,6 +27,7 @@
     <script src="{{asset('public/backend/js/morris.js')}}"></script>
 </head>
 <body>
+    
     <section >
     <!--header start-->
         <header class="header fixed-top clearfix">
@@ -39,19 +40,14 @@
         <!--logo end-->
         <div class="top-nav clearfix">
             
-            <ul class="nav pull-right top-menu">
-                <li>
-                    <input type="text" class="form-control search" placeholder=" Search">
-                </li>
+            <ul class="nav pull-right top-menu" style="text-align: right;">
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <img alt="" src="images/2.png">
-                        <span class="username">Acount</span>
+                        <img alt="" width="10%" src="public/frontend/images/avt-admin.jpg">
+                        <span class="username" style="color: black;">Tài khoản</span>
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu extended logout">
-                        <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
-                        <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
                         <li><a href="{{URL::to('/logout')}}"><i class="fa fa-key"></i> Log Out</a></li>
                     </ul>
                 </li>
@@ -59,20 +55,15 @@
             </ul>
         </div>
         </header>
+        
     
 
         <div>
-            <aside class="aside" style="margin: 20px;">
+            <aside style="margin: 20px;">
                 <div id="sidebar" class="nav-collapse">
                     <!-- sidebar menu start-->
                     <div class="leftside-navigation">
                         <ul class="sidebar-menu" id="nav-accordion">
-                            <li>
-                                <a class="active" href="index.html">
-                                    <i class="fa fa-dashboard"></i>
-                                    <span>Tổng quan</span>
-                                </a>
-                            </li>
                             
                             <li class="sub-menu">
                                 <a href="javascript:;">
@@ -130,14 +121,13 @@
                     <!-- sidebar menu end-->
                 </div>
             </aside>
-        
             <section id="main-content">
                 <section class="wrapper">
                     @yield('admin_content')
-                </section>
-                    
-                
+                </section> 
             </section>
+        
+            
         </div>
 
     </section>
@@ -186,9 +176,6 @@
             
             var comment_product_id = $(this).data('product_id');
 
-            // alert(comment);
-            // alert(comment_id);
-            // alert(comment_product_id);
 
             $.ajax({
                 url:"{{url('/reply-comment')}}",
@@ -208,6 +195,36 @@
     </script>
 
    
-        <!-- //calendar -->
+        <!-- // xử lý đơn hàng-->
+        <script type="text/javascript">
+            $('.order_duyet_btn').click(function(){
+                var order_status = $(this).data('order_status');
+                var order_id = $(this).data('order_id');
+                var shipping_id = $(this).attr('id');
+
+                if(order_status==0){
+                    var alert = 'Xử lý thành công';
+                }else{
+                    var alert = 'Hủy đơn hàng';
+                }
+                
+                $.ajax({
+                    url:"{{url('/allow-order')}}",
+                    method:"POST",
+                    headers:{
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+
+                    },
+                    data:{order_status:order_status,order_id:order_id,shipping_id:shipping_id},
+                    success:function(data){
+                        location.reload();
+                        $('#notify_order').html('<span class="text text-alert">'+alert+'</span>')
+
+                    }
+                })
+            });
+        </script>
+        
+
 </body>
 </html>

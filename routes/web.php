@@ -13,8 +13,11 @@ Route::get('/chi-tiet-san-pham/{product_id}', 'App\Http\Controllers\ProductContr
 Route::get('/comment', 'App\Http\Controllers\ProductController@list_comment');
 Route::post('/load-comment', 'App\Http\Controllers\ProductController@load_comment');
 Route::post('/send-comment', 'App\Http\Controllers\ProductController@send_comment');
-Route::post('/allow-comment', 'App\Http\Controllers\ProductController@allow_comment');
+// Route::post('/allow-comment', 'App\Http\Controllers\ProductController@allow_comment');
+Route::match(['get', 'post'], '/allow-comment', 'App\Http\Controllers\ProductController@allow_comment');
 Route::post('/reply-comment', 'App\Http\Controllers\ProductController@reply_comment');
+
+
 
 
 //backend
@@ -49,11 +52,12 @@ Route::get('/show-cart', 'App\Http\Controllers\CartController@show_cart');
 
 Route::post('/update-cart-quantity','App\Http\Controllers\CartController@update_cart_quantity');
 Route::post('/update-cart','App\Http\Controllers\CartController@update_cart');
-Route::post('/add-cart-ajax','App\Http\Controllers\CartController@add_cart_ajax');
 Route::get('/gio-hang','App\Http\Controllers\CartController@gio_hang');
 Route::get('/delete-to-cart/{rowId}','App\Http\Controllers\CartController@delete_to_cart');
 Route::get('/del-product/{session_id}','App\Http\Controllers\CartController@delete_product');
 Route::get('/del-all-product','App\Http\Controllers\CartController@delete_all_product');
+Route::post('/add-cart-ajax','App\Http\Controllers\CartController@add_cart_ajax');
+
 
 //checkout
 Route::get('/login-checkout','App\Http\Controllers\CheckoutController@login_checkout');
@@ -61,6 +65,8 @@ Route::post('/login-customer','App\Http\Controllers\CheckoutController@login_cus
 
 Route::get('/logout-checkout','App\Http\Controllers\CheckoutController@logout_checkout');
 Route::get('/checkout','App\Http\Controllers\CheckoutController@checkout');
+
+
 // Route::post('/add-customer','App\Http\Controllers\CheckoutController@add_customer');
 
 Route::post('/add-customer', 'App\Http\Controllers\CheckoutController@addCustomer');
@@ -73,6 +79,10 @@ Route::post('/order-place','App\Http\Controllers\CheckoutController@order_place'
 // order-admin
 Route::get('/manage-order','App\Http\Controllers\CheckoutController@manage_order');
 Route::get('/view-order/{orderId}','App\Http\Controllers\CheckoutController@view_order');
+
+Route::get('/delete-order/{order_id}', 'App\Http\Controllers\CheckoutController@delete_order');
+Route::post('/allow-order', 'App\Http\Controllers\CheckoutController@allow_order');
+
 
 
 //Delivery

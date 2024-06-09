@@ -74,9 +74,6 @@
 					<span>
 						<label><input name="payment_option" value="2" type="checkbox"> Thanh toán khi nhận hàng</label>
 					</span>
-					<span>
-						<label><input name="payment_option" value="3" type="checkbox"> Thẻ ghi nợ</label>
-					</span>
 					<input type="submit" value="Đặt hàng" name="send_order_place" class="btn btn-primary btn-sm">
 			</div>
 			<form>
